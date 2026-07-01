@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Acadience Letter Generator — Case Study</title>
+<meta name="description" content="A product case study: turning days of manual benchmark-assessment work into a one-click, ~12-minute workflow. Workflow design, systems thinking, and human-centered automation.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#1a1d21;
+    --ink-soft:#3f454d;
+    --gray:#6b727c;
+    --gray-light:#9aa1ab;
+    --line:#e8eaed;
+    --line-soft:#f0f1f3;
+    --bg:#ffffff;
+    --panel:#fafbfc;
+    --accent:#12294d;      /* deep navy, echoes the tool header — used sparingly */
+    --radius:16px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+  body{
+    background:#eceef1;
+    color:var(--ink);
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,sans-serif;
+    font-size:16px;
+    line-height:1.65;
+    padding:48px 20px;
+  }
+  .page{
+    max-width:860px;
+    margin:0 auto 40px;
+    background:var(--bg);
+    border-radius:24px;
+    padding:88px 92px;
+    box-shadow:0 1px 3px rgba(16,24,40,.04),0 12px 40px rgba(16,24,40,.06);
+  }
+
+  /* ---- Cover ---- */
+  .eyebrow{
+    font-size:12.5px;
+    font-weight:600;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--gray-light);
+    margin-bottom:26px;
+  }
+  h1{
+    font-family:'Poppins',sans-serif;
+    font-weight:800;
+    font-size:52px;
+    line-height:1.05;
+    letter-spacing:-.02em;
+    color:var(--ink);
+    margin-bottom:22px;
+  }
+  .deck{
+    font-size:20px;
+    line-height:1.5;
+    color:var(--ink-soft);
+    font-weight:400;
+    max-width:38ch;
+    margin-bottom:38px;
+  }
+  .byline{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-size:15px;
+    color:var(--gray);
+    padding-bottom:40px;
+    border-bottom:1px solid var(--line);
+  }
+  .byline strong{color:var(--ink);font-weight:600}
+  .byline .dot{width:3px;height:3px;border-radius:50%;background:var(--gray-light)}
+  .byline .role{color:var(--gray)}
+
+  /* ---- Project Snapshot ---- */
+  .snapshot{
+    margin:44px 0 8px;
+  }
+  .snapshot-label{
+    font-size:12.5px;
+    font-weight:600;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--accent);
+    margin-bottom:22px;
+  }
+  .snap-grid{
+    display:grid;
+    grid-template-columns:150px 1fr;
+    row-gap:0;
+  }
+  .snap-row{
+    display:contents;
+  }
+  .snap-grid .k,.snap-grid .v{
+    padding:15px 0;
+    border-top:1px solid var(--line-soft);
+  }
+  .snap-grid .k{
+    font-size:14px;
+    font-weight:500;
+    color:var(--gray);
+  }
+  .snap-grid .v{
+    font-size:15px;
+    color:var(--ink);
+    font-weight:500;
+  }
+  .snap-grid .v .muted{color:var(--gray);font-weight:400}
+
+  /* ---- Hero statement ---- */
+  .herostmt{
+    margin:52px 0 0;
+    padding-top:44px;
+    border-top:1px solid var(--line);
+    font-family:'Poppins',sans-serif;
+    font-weight:600;
+    font-size:26px;
+    line-height:1.38;
+    letter-spacing:-.015em;
+    color:var(--ink);
+    max-width:none;
+  }
+
+  /* ---- Hero image ---- */
+  figure{margin:52px 0 0}
+  .shot{
+    width:100%;
+    display:block;
+    border-radius:12px;
+    border:1px solid var(--line);
+    box-shadow:0 2px 6px rgba(16,24,40,.05),0 18px 44px rgba(16,24,40,.10);
+  }
+  figcaption{
+    margin-top:16px;
+    font-size:13.5px;
+    color:var(--gray);
+    line-height:1.55;
+    text-align:center;
+  }
+
+  /* ---- Section headings ---- */
+  .section-head{margin-bottom:26px}
+  .section-head .eyebrow2{
+    font-size:12.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
+    color:var(--accent);margin-bottom:12px;display:block;
+  }
+  h2{
+    font-family:'Poppins',sans-serif;font-weight:700;font-size:31px;line-height:1.12;
+    letter-spacing:-.02em;color:var(--ink);
+  }
+  .prose p{
+    color:var(--ink-soft);font-size:16px;line-height:1.68;max-width:64ch;
+  }
+  .prose p + p{margin-top:1.15em}
+  .prose .lead{font-size:18px;color:var(--ink);line-height:1.6}
+  .lead-in{
+    font-size:16px;color:var(--ink-soft);margin:34px 0 4px;max-width:64ch;
+  }
+
+  /* ---- Failure-mode cards ---- */
+  .failcards{
+    display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:22px 0 4px;
+  }
+  .failcard{
+    border:1px solid var(--line);border-radius:12px;background:var(--panel);
+    padding:20px 22px;
+  }
+  .failcard .kick{
+    font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--gray-light);margin-bottom:9px;
+  }
+  .failcard p{font-size:14.5px;line-height:1.55;color:var(--ink-soft)}
+
+  /* ---- Pull quote ---- */
+  .pullquote{
+    margin:46px 0;padding:6px 0 6px 26px;border-left:3px solid var(--accent);
+    font-size:22px;line-height:1.42;font-weight:500;color:var(--ink);
+    letter-spacing:-.01em;max-width:56ch;
+  }
+
+  /* ---- Before / After comparison ---- */
+  .compare{
+    border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:36px 0 8px;
+  }
+  .compare .row{display:grid;grid-template-columns:1fr 1fr}
+  .compare .row + .row{border-top:1px solid var(--line-soft)}
+  .compare .cell{padding:17px 24px;font-size:15px;line-height:1.5}
+  .compare .before{color:var(--gray)}
+  .compare .after{color:var(--ink);font-weight:500;background:#f7f9fc;border-left:1px solid var(--line-soft)}
+  .compare .head .cell{
+    font-size:11.5px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;
+    padding-top:15px;padding-bottom:15px;background:var(--panel);
+  }
+  .compare .head .before{color:var(--gray-light)}
+  .compare .head .after{color:var(--accent);background:#f2f5fa}
+
+  /* ---- Feature trio ---- */
+  .trio{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:26px 0 8px}
+
+  /* ---- Narrow figure (tall screenshots) ---- */
+  figure.narrow{max-width:600px;margin-left:auto;margin-right:auto}
+  figure.narrow .shot{width:100%}
+
+  /* ---- Video ---- */
+  video.shot{height:auto;background:#0b0f14;display:block}
+
+  /* ---- Note / callout ---- */
+  .note{
+    border:1px solid var(--line);border-left:3px solid var(--accent);
+    border-radius:12px;background:var(--panel);padding:20px 24px;margin:32px 0 8px;
+  }
+  .note .kick{
+    font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--gray-light);margin-bottom:9px;
+  }
+  .note p{font-size:15px;line-height:1.6;color:var(--ink-soft);max-width:64ch}
+
+  /* ---- Relay diagram ---- */
+  .relaysvg{display:block;width:100%;height:auto;margin:34px 0 12px}
+  .relaysvg text{font-family:'Inter',-apple-system,sans-serif}
+
+  /* ---- Closing statement ---- */
+  .statement{
+    text-align:center;font-size:23px;line-height:1.42;font-weight:500;color:var(--ink);
+    letter-spacing:-.01em;max-width:44ch;margin:56px auto 6px;
+  }
+  .statement.wide{max-width:none;text-align:left;margin-left:0;margin-right:0}
+
+  /* ---- Impact stats ---- */
+  .stats{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:30px 0 8px}
+  .stat{border:1px solid var(--line);border-radius:14px;background:var(--panel);padding:26px 28px}
+  .stat .val{
+    font-family:'Poppins',sans-serif;font-weight:700;font-size:34px;
+    letter-spacing:-.02em;color:var(--ink);line-height:1.08;
+  }
+  .stat .lab{margin-top:11px;font-size:14px;color:var(--gray);line-height:1.5}
+
+  /* ---- Links ---- */
+  .links{display:flex;gap:28px;flex-wrap:wrap;margin:36px 0 4px}
+  .links a{
+    font-size:15px;font-weight:500;color:var(--accent);text-decoration:none;
+    border-bottom:1px solid rgba(18,41,77,.28);padding-bottom:2px;
+  }
+  .links a:hover{border-bottom-color:var(--accent)}
+
+  /* ---- Fine print ---- */
+  .finelegal{
+    margin-top:44px;padding-top:24px;border-top:1px solid var(--line);
+    font-size:12px;color:var(--gray-light);line-height:1.65;max-width:70ch;
+  }
+
+  /* ---- Bridge / reframe ---- */
+  .bridge{margin-top:8px}
+  .bridge p{color:var(--ink-soft);font-size:16px;line-height:1.68;max-width:64ch}
+  .bridge strong{color:var(--ink);font-weight:600}
+
+  .divider{height:1px;background:var(--line);margin:64px 0}
+
+  @media (max-width:640px){
+    .page{padding:44px 28px}
+    h1{font-size:38px}
+    h2{font-size:26px}
+    .failcards{grid-template-columns:1fr}
+    .pullquote{font-size:19px}
+    .deck{font-size:18px}
+    .snap-grid{grid-template-columns:1fr;row-gap:0}
+    .snap-grid .k{padding-bottom:0;border-top:1px solid var(--line-soft)}
+    .snap-grid .v{padding-top:4px;border-top:none}
+    .compare .row{grid-template-columns:1fr 1fr}
+    .stats{grid-template-columns:1fr}
+    .trio{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+  <!-- ============ PAGE 1 — COVER + SNAPSHOT + HERO ============ -->
+  <section class="page">
+    <p class="eyebrow">Product Case Study</p>
+    <h1>From Days to<br>Twelve Minutes</h1>
+    <p class="deck">Building an assessment workflow engine.</p>
+    <div class="byline">
+      <strong>Adaire Baltzer</strong>
+      <span class="dot"></span>
+      <span class="role">Workflow Designer &bull; Systems Thinker</span>
+    </div>
+
+    <div class="snapshot">
+      <p class="snapshot-label">Project Snapshot</p>
+      <div class="snap-grid">
+        <div class="k">My Contribution</div>
+        <div class="v">Problem definition, workflow &amp; data-model design, system architecture, testing, and product decisions</div>
+
+        <div class="k">Built with</div>
+        <div class="v">Google Sheets <span class="muted">·</span> Google Apps Script</div>
+
+        <div class="k">Scope</div>
+        <div class="v">Elementary benchmark assessment workflow <span class="muted">— reading &amp; math</span></div>
+
+        <div class="k">Status</div>
+        <div class="v">Parent-letter generation live<br><span class="muted">Additional workflow modules planned</span></div>
+
+        <div class="k">Result</div>
+        <div class="v">Days &rarr; ~12 minutes<br><span class="muted">One click. Unattended execution.</span></div>
+      </div>
+    </div>
+
+    <p class="herostmt">I build systems that reduce complexity, eliminate repetitive work, and give people more time for the work that requires human judgment.</p>
+  </section>
+
+  <!-- ============ PAGE 2 — THE PROBLEM (snapshot) ============ -->
+  <section class="page">
+    <div class="section-head">
+      <span class="eyebrow2">The Problem</span>
+    </div>
+
+    <div class="prose">
+      <p class="lead">Three times each year, benchmark assessments generated hundreds of student results that needed to be translated into teacher-specific parent communication packets. The process required extensive manual filtering, document preparation, formatting, and organization before anything could be shared with families.</p>
+    </div>
+
+    <div class="compare">
+      <div class="row head">
+        <div class="cell before">Before</div>
+        <div class="cell after">After</div>
+      </div>
+      <div class="row">
+        <div class="cell before">Multiple days of manual work</div>
+        <div class="cell after">~12 minutes</div>
+      </div>
+      <div class="row">
+        <div class="cell before">Repeated filtering and formatting</div>
+        <div class="cell after">One-click workflow</div>
+      </div>
+      <div class="row">
+        <div class="cell before">Manual document organization</div>
+        <div class="cell after">Automatic packet generation</div>
+      </div>
+      <div class="row">
+        <div class="cell before">Staff attention required throughout</div>
+        <div class="cell after">Unattended execution</div>
+      </div>
+    </div>
+
+    <p class="statement">The solution wasn&rsquo;t another spreadsheet. It was designing the spreadsheet to behave like an application.</p>
+  </section>
+
+  <!-- ============ PAGE 3 — THE PRODUCT ============ -->
+  <section class="page">
+    <div class="section-head">
+      <span class="eyebrow2">The Product</span>
+    </div>
+
+    <div class="prose">
+      <p class="lead">A teacher exports their benchmark data, drops the file in a folder, and clicks one button. The system imports the newest file, normalizes it, filters to the selected assessment window, groups students by teacher, and generates a formatted Google Doc packet for each &mdash; automatically applying the correct window, template, and formatting every time.</p>
+    </div>
+
+    <figure>
+      <img class="shot" src="Dashboard.png" alt="The Parent Communication Dashboard — a guided control panel built in Google Sheets">
+      <figcaption>The control panel &mdash; guided steps, live status, and a one-click run, all from a single screen.</figcaption>
+    </figure>
+
+    <div class="trio">
+      <div class="failcard">
+        <div class="kick">Guided steps</div>
+        <p>Numbered steps carry the user from first-time setup through generation.</p>
+      </div>
+      <div class="failcard">
+        <div class="kick">Live status</div>
+        <p>Status indicators and a progress bar show what&rsquo;s done and what&rsquo;s left, in real time.</p>
+      </div>
+      <div class="failcard">
+        <div class="kick">Setup validation</div>
+        <p>The tool confirms every required resource exists before it will run.</p>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section-head">
+      <span class="eyebrow2">First-run setup</span>
+    </div>
+    <div class="prose">
+      <p>Rather than requiring users to edit hidden configuration values or documentation, I designed a guided setup wizard that walks them through first-time configuration with visual instructions &mdash; and validates the required resources before the application can be used.</p>
+    </div>
+
+    <figure class="narrow">
+      <img class="shot" src="Wizard.png" alt="The built-in setup wizard, walking a user through first-time configuration">
+      <figcaption>The built-in setup wizard &mdash; a non-technical user can configure and run the tool without help.</figcaption>
+    </figure>
+
+    <div class="divider"></div>
+
+    <div class="section-head">
+      <span class="eyebrow2">See it run</span>
+    </div>
+    <figure>
+      <video class="shot" controls preload="metadata" playsinline poster="Dashboard.png">
+        <source src="Acadience Demo v1.mp4" type="video/mp4">
+      </video>
+      <figcaption>A 90-second walkthrough &mdash; from exported data to finished packets, in one click.</figcaption>
+    </figure>
+  </section>
+
+  <!-- ============ PAGE 4 — HOW IT WORKS ============ -->
+  <section class="page">
+    <div class="section-head">
+      <span class="eyebrow2">How It Works</span>
+    </div>
+
+    <div class="prose">
+      <p class="lead">The system is designed as a pipeline, not a single script. Raw data is imported, cleaned, and validated, then written to one processed dataset that acts as a single source of truth. Only then does the workflow engine run &mdash; selecting students, merging data into templates, and generating a formatted packet for each teacher.</p>
+    </div>
+
+    <figure>
+      <img class="shot" src="Workflow.png" alt="The processing pipeline — import, normalize and validate, create processed dataset, run workflow engine, generate outputs">
+      <figcaption>Each stage has a single responsibility &mdash; so problems are easy to isolate, and new outputs can attach without disturbing the core.</figcaption>
+    </figure>
+
+    <div class="note">
+      <div class="kick">Built to extend</div>
+      <p>The split ending is deliberate. Parent-letter packets are live today; additional outputs &mdash; student reports, MTSS summaries, compliance documents &mdash; are planned modules that hang off the same engine rather than rebuilds of it. New requirements become an output-layer change, not a new project.</p>
+    </div>
+  </section>
+
+  <!-- ============ PAGE 5 — ENGINEERING DECISIONS ============ -->
+  <section class="page">
+    <div class="section-head">
+      <span class="eyebrow2">Engineering Decisions</span>
+    </div>
+
+    <div class="note">
+      <div class="kick">The constraint</div>
+      <p>Google Apps Script caps a single execution at roughly six minutes. A full building&rsquo;s worth of letters takes longer than that &mdash; so a naive version would simply stop partway through.</p>
+    </div>
+
+    <div class="prose">
+      <p>Workspace accounts get a longer window, but I built for the shorter limit on purpose &mdash; so the tool runs anywhere, on any account, without depending on a particular tier. Then I designed around the constraint rather than against it.</p>
+      <p>The workflow processes as many teacher packets as it can within a safe time budget, then automatically schedules its own continuation and resumes where it left off &mdash; until every packet is complete. Progress is tracked in the data itself, so the system always knows what&rsquo;s done and what remains, which also means it can recover if anything interrupts it mid-run.</p>
+    </div>
+
+    <figure>
+      <svg class="relaysvg" viewBox="0 0 720 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram of the self-continuing relay loop">
+        <!-- boxes -->
+        <rect x="0" y="20" width="214" height="104" rx="12" fill="#fafbfc" stroke="#e8eaed"/>
+        <rect x="253" y="20" width="214" height="104" rx="12" fill="#fafbfc" stroke="#e8eaed"/>
+        <rect x="506" y="20" width="214" height="104" rx="12" fill="#fafbfc" stroke="#e8eaed"/>
+        <!-- box 1 -->
+        <text x="20" y="46" font-size="13" font-weight="700" fill="#12294d">1</text>
+        <text x="20" y="70" font-size="15" font-weight="600" fill="#1a1d21">Process a batch</text>
+        <text x="20" y="91" font-size="12" fill="#6b727c">as many as fit within</text>
+        <text x="20" y="107" font-size="12" fill="#6b727c">a safe time budget</text>
+        <!-- box 2 -->
+        <text x="273" y="46" font-size="13" font-weight="700" fill="#12294d">2</text>
+        <text x="273" y="70" font-size="15" font-weight="600" fill="#1a1d21">Save progress</text>
+        <text x="273" y="91" font-size="12" fill="#6b727c">what&rsquo;s done, recorded</text>
+        <text x="273" y="107" font-size="12" fill="#6b727c">in the data itself</text>
+        <!-- box 3 -->
+        <text x="526" y="46" font-size="13" font-weight="700" fill="#12294d">3</text>
+        <text x="526" y="70" font-size="14" font-weight="600" fill="#1a1d21">Schedule continuation</text>
+        <text x="526" y="91" font-size="12" fill="#6b727c">queues the next run,</text>
+        <text x="526" y="107" font-size="12" fill="#6b727c">automatically</text>
+        <!-- arrows between -->
+        <line x1="214" y1="72" x2="247" y2="72" stroke="#9aa1ab" stroke-width="1.5"/>
+        <polygon points="253,72 245,68 245,76" fill="#9aa1ab"/>
+        <line x1="467" y1="72" x2="500" y2="72" stroke="#9aa1ab" stroke-width="1.5"/>
+        <polygon points="506,72 498,68 498,76" fill="#9aa1ab"/>
+        <!-- return loop -->
+        <path d="M613,124 L613,150 Q613,158 605,158 L115,158 Q107,158 107,150 L107,130" fill="none" stroke="#12294d" stroke-width="1.5"/>
+        <polygon points="107,122 103,131 111,131" fill="#12294d"/>
+        <text x="360" y="182" font-size="12" font-weight="500" fill="#12294d" text-anchor="middle">Resumes where it left off &mdash; until every packet is complete</text>
+      </svg>
+      <figcaption>The self-continuing relay &mdash; the run advances, saves its place, and reschedules itself until the job is done.</figcaption>
+    </figure>
+
+    <p class="statement">This turned the experience from &ldquo;keep clicking until it finishes&rdquo; into &ldquo;click once and walk away.&rdquo;</p>
+
+    <div class="note">
+      <div class="kick">Reporting, not deciding</div>
+      <p>The tool reports each student&rsquo;s benchmark results &mdash; it doesn&rsquo;t interpret them or recommend what to do next. Surfacing the data is its job; deciding what it means for a child stays with educators. That boundary was deliberate, and it&rsquo;s the line future modules will hold to as well.</p>
+    </div>
+  </section>
+
+  <!-- ============ PAGE 6 — IMPACT, ROADMAP, REFLECTION ============ -->
+  <section class="page">
+    <div class="section-head">
+      <span class="eyebrow2">Impact</span>
+    </div>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="val">~12 min</div>
+        <div class="lab">One click, unattended &mdash; down from days of manual work.</div>
+      </div>
+      <div class="stat">
+        <div class="val">Every run</div>
+        <div class="lab">Correct and identical, no matter who generates it or how rushed they are.</div>
+      </div>
+    </div>
+
+    <div class="prose">
+      <p>The time saved is the obvious win. The bigger one is reliability: the mistakes that used to be easy to make &mdash; the wrong window, a broken merge field, a bad file format &mdash; simply can&rsquo;t happen anymore. Every packet comes out correct and consistent.</p>
+    </div>
+
+    <p class="pullquote">A solution that only one person can run isn&rsquo;t really a solution.</p>
+    <div class="prose">
+      <p>One that other people can pick up, understand, and adopt on their own is. Early on, I documented a simpler spreadsheet-and-mail-merge version of the process, and other schools began running their own copies of it &mdash; the approach spread well beyond my building.</p>
+    </div>
+
+    <div class="note">
+      <div class="kick">Leverage where it counts</div>
+      <p>The district has since merged the reading and math specialist roles into a single position &mdash; one person now carries the workload two people used to share. A tool that turns days of manual work into one click is exactly the kind of leverage that makes do-more-with-less survivable.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="section-head">
+      <span class="eyebrow2">What&rsquo;s Next</span>
+    </div>
+    <div class="trio">
+      <div class="failcard">
+        <div class="kick">More output modules</div>
+        <p>Administrator reports, intervention documentation, and compliance notifications &mdash; on the same engine, without touching the core.</p>
+      </div>
+      <div class="failcard">
+        <div class="kick">A hardened relay</div>
+        <p>A continuation mechanism fully resilient to slow network conditions.</p>
+      </div>
+      <div class="failcard">
+        <div class="kick">Built to adapt</div>
+        <p>The district is moving away from one assessment subject &mdash; a modular output-layer change, not a rebuild.</p>
+      </div>
+    </div>
+    <p class="statement wide">The goal was a polished, documented version that solves a real problem well &mdash; not the largest possible application.</p>
+
+    <div class="divider"></div>
+
+    <div class="section-head">
+      <span class="eyebrow2">Where AI Fit</span>
+    </div>
+    <div class="prose">
+      <p>AI accelerated the implementation; it didn&rsquo;t replace the thinking. The problem definition, the architecture, the tradeoffs, and the testing were mine &mdash; and knowing how to direct AI well, and being honest about it, is itself a current, relevant skill.</p>
+    </div>
+
+    <div class="links">
+      <a href="https://www.linkedin.com/pulse/from-days-twelve-minutes-adaire-baltzer-c3ojc" target="_blank" rel="noopener">Read the full write-up &nearr;</a>
+      <a href="https://github.com/adaire-b/acadience-letter-generator" target="_blank" rel="noopener">View on GitHub &nearr;</a>
+    </div>
+
+    <p class="finelegal">Acadience&reg; is a registered trademark of Acadience Learning Inc. This is an independent project and is not affiliated with, endorsed by, or sponsored by Acadience Learning Inc. The Acadience name is used only to describe the assessment data the tool processes. All names, schools, and data shown in screenshots are fictional and used for demonstration purposes only.</p>
+  </section>
+
+</body>
+</html>
