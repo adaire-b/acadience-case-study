@@ -22,6 +22,17 @@
     --link:#17345C;        /* links + accent text */
     --radius:16px;
   }
+  .sitenav{max-width:860px;margin:0 auto;padding:26px 20px 20px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px 20px;border-bottom:1px solid #E3E7EA;font-size:14px}
+  .sitenav .brand{color:#7A8895;font-weight:600}
+  .sitenav .links{display:flex;flex-wrap:wrap;gap:8px 18px}
+  .sitenav a{color:#17345C;text-decoration:none}
+  .sitenav a:hover{text-decoration:underline}
+  @media (max-width:600px){.sitenav{flex-direction:column;align-items:flex-start;gap:10px}}
+  .sitefooter{max-width:860px;margin:0 auto;padding:24px 20px 40px;border-top:1px solid #E3E7EA;font-size:14px}
+  .sitefooter .label{display:block;color:#7A8895;font-weight:600;font-size:12px;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px}
+  .sitefooter .links{display:flex;flex-wrap:wrap;gap:8px 18px}
+  .sitefooter a{color:#17345C;text-decoration:none}
+  .sitefooter a:hover{text-decoration:underline}
   *{box-sizing:border-box;margin:0;padding:0}
   html{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
   body{
@@ -289,6 +300,20 @@
 </style>
 </head>
 <body>
+<nav class="sitenav">
+  <span class="brand">Adaire Baltzer</span>
+  <span class="links">
+    <a href="https://adaire-b.carrd.co">Portfolio</a>
+    <a href="https://adaire-b.github.io/acadience-case-study/">Acadience</a>
+    <a href="https://adaire-b.github.io/mtss-case-study/">MTSS</a>
+    <a href="https://adaire-b.github.io/para-pd-hub/">Para Hub</a>
+    <a href="https://adaire-b.github.io/about/">About</a>
+    <a href="https://adaire-b.github.io/resume/">Résumé</a>
+    <a href="https://adaire-b.github.io/resume/Adaire_Baltzer_Resume.pdf">PDF</a>
+    <a href="https://www.linkedin.com/in/adaire-baltzer">LinkedIn</a>
+    <a href="https://github.com/adaire-b">GitHub</a>
+  </span>
+</nav>
 
   <!-- ============ PAGE 1 — COVER + SNAPSHOT + HERO ============ -->
   <section class="page">
@@ -314,7 +339,7 @@
         <div class="v">Elementary benchmark assessment workflow <span class="muted">· reading &amp; math</span></div>
 
         <div class="k">Status</div>
-        <div class="v">Parent-letter generation live<br><span class="muted">Additional workflow modules planned</span></div>
+        <div class="v">Parent-letter generation complete<br><span class="muted">Additional workflow modules planned</span></div>
 
         <div class="k">Result</div>
         <div class="v">Days &rarr; ~12 minutes<br><span class="muted">One click. Unattended execution.</span></div>
@@ -449,7 +474,7 @@
 
     <div class="note">
       <div class="kick">Built to extend</div>
-      <p>The split ending is deliberate. Parent letters are live today. Student reports, MTSS summaries, and compliance documents are planned modules that hang off the same engine. New requirements become an output-layer change, not a new project.</p>
+      <p>The split ending is deliberate. The parent-letter module is done and runs end to end. Student reports, MTSS summaries, and compliance documents are planned modules that hang off the same engine. New requirements become an output-layer change, not a new project.</p>
     </div>
   </section>
 
@@ -534,12 +559,12 @@
 
     <p class="pullquote">A solution that only one person can run isn&rsquo;t really a solution.</p>
     <div class="prose">
-      <p>One that other people can pick up and run on their own is. Early on, I documented a simpler mail-merge version of the process, and other schools began running their own copies. The approach spread well beyond my building, and I have a feeling this version will make it to them too.</p>
+      <p>One that other people can pick up and run on their own is. Early on, I documented a simpler mail-merge version of the process, and other schools began running their own copies. The approach spread well beyond my building, and this version is next: a colleague still there will be getting a copy.</p>
     </div>
 
     <div class="note">
       <div class="kick">Leverage where it counts</div>
-      <p>The district has since merged the reading and math specialist roles into one position. One person now carries the workload two people used to share. A tool that turns days of work into one click is what makes that survivable.</p>
+      <p>The district has since merged the reading and math specialist roles into one position, with one person now carrying the workload two people used to share. That&rsquo;s exactly the kind of load this was built to take off someone&rsquo;s plate.</p>
     </div>
 
     <div class="divider"></div>
@@ -580,5 +605,18 @@
     <p class="finelegal">Acadience&reg; is a registered trademark of Acadience Learning Inc. This is an independent project and is not affiliated with, endorsed by, or sponsored by Acadience Learning Inc. The Acadience name is used only to describe the assessment data the tool processes. All names, schools, and data shown in screenshots are fictional and used for demonstration purposes only.</p>
   </section>
 
+<footer class="sitefooter">
+  <span class="label">Explore More</span>
+  <span class="links">
+    <a href="https://adaire-b.carrd.co">Portfolio</a>
+    <a href="https://adaire-b.github.io/acadience-case-study/">Acadience</a>
+    <a href="https://adaire-b.github.io/mtss-case-study/">MTSS</a>
+    <a href="https://adaire-b.github.io/para-pd-hub/">Para Hub</a>
+    <a href="https://adaire-b.github.io/about/">About</a>
+    <a href="https://adaire-b.github.io/resume/">Résumé</a>
+  </span>
+</footer>
+
 </body>
 </html>
+
