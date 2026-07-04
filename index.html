@@ -4,21 +4,22 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Acadience Letter Generator — Case Study</title>
-<meta name="description" content="A product case study: turning days of manual benchmark-assessment work into a one-click, ~12-minute workflow. Workflow design, systems thinking, and human-centered automation.">
+<meta name="description" content="A product case study: turning days of manual benchmark-assessment work into a one-click, ~12-minute workflow.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
-    --ink:#1a1d21;
-    --ink-soft:#3f454d;
-    --gray:#6b727c;
-    --gray-light:#9aa1ab;
-    --line:#e8eaed;
-    --line-soft:#f0f1f3;
+    --ink:#434C4F;         /* --heading */
+    --ink-soft:#555F61;    /* --text */
+    --gray:#7A8895;        /* --muted */
+    --gray-light:#9AA6B0;
+    --line:#E3E7EA;
+    --line-soft:#EFF1F3;
     --bg:#ffffff;
     --panel:#fafbfc;
-    --accent:#12294d;      /* deep navy, echoes the tool header — used sparingly */
+    --accent:#8EA2C5;      /* decorative accents */
+    --link:#17345C;        /* links + accent text */
     --radius:16px;
   }
   *{box-sizing:border-box;margin:0;padding:0}
@@ -88,7 +89,7 @@
     font-weight:600;
     letter-spacing:.14em;
     text-transform:uppercase;
-    color:var(--accent);
+    color:var(--link);
     margin-bottom:22px;
   }
   .snap-grid{
@@ -150,7 +151,7 @@
   .section-head{margin-bottom:26px}
   .section-head .eyebrow2{
     font-size:12.5px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
-    color:var(--accent);margin-bottom:12px;display:block;
+    color:var(--link);margin-bottom:12px;display:block;
   }
   h2{
     font-family:'Poppins',sans-serif;font-weight:700;font-size:31px;line-height:1.12;
@@ -186,6 +187,13 @@
     letter-spacing:-.01em;max-width:56ch;
   }
 
+  /* ---- Evolution chain ---- */
+  .evo{
+    text-align:center;font-size:14.5px;color:var(--gray);letter-spacing:.01em;
+    margin:30px 0 8px;line-height:1.9;
+  }
+  .evo .arrow{color:var(--accent);padding:0 4px}
+
   /* ---- Before / After comparison ---- */
   .compare{
     border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:36px 0 8px;
@@ -200,7 +208,7 @@
     padding-top:15px;padding-bottom:15px;background:var(--panel);
   }
   .compare .head .before{color:var(--gray-light)}
-  .compare .head .after{color:var(--accent);background:#f2f5fa}
+  .compare .head .after{color:var(--link);background:#f2f5fa}
 
   /* ---- Feature trio ---- */
   .trio{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:26px 0 8px}
@@ -246,10 +254,10 @@
   /* ---- Links ---- */
   .links{display:flex;gap:28px;flex-wrap:wrap;margin:36px 0 4px}
   .links a{
-    font-size:15px;font-weight:500;color:var(--accent);text-decoration:none;
-    border-bottom:1px solid rgba(18,41,77,.28);padding-bottom:2px;
+    font-size:15px;font-weight:500;color:var(--link);text-decoration:none;
+    border-bottom:1px solid rgba(23,52,92,.28);padding-bottom:2px;
   }
-  .links a:hover{border-bottom-color:var(--accent)}
+  .links a:hover{border-bottom-color:var(--link)}
 
   /* ---- Fine print ---- */
   .finelegal{
@@ -290,7 +298,7 @@
     <div class="byline">
       <strong>Adaire Baltzer</strong>
       <span class="dot"></span>
-      <span class="role">Workflow Designer &bull; Systems Thinker</span>
+      <span class="role">Workflow Designer</span>
     </div>
 
     <div class="snapshot">
@@ -303,7 +311,7 @@
         <div class="v">Google Sheets <span class="muted">·</span> Google Apps Script</div>
 
         <div class="k">Scope</div>
-        <div class="v">Elementary benchmark assessment workflow <span class="muted">— reading &amp; math</span></div>
+        <div class="v">Elementary benchmark assessment workflow <span class="muted">· reading &amp; math</span></div>
 
         <div class="k">Status</div>
         <div class="v">Parent-letter generation live<br><span class="muted">Additional workflow modules planned</span></div>
@@ -313,17 +321,18 @@
       </div>
     </div>
 
-    <p class="herostmt">I build systems that reduce complexity, eliminate repetitive work, and give people more time for the work that requires human judgment.</p>
+    <p class="herostmt">I build systems that handle the repetitive work so people can spend their time on the parts that need human judgment.</p>
   </section>
 
-  <!-- ============ PAGE 2 — THE PROBLEM (snapshot) ============ -->
+  <!-- ============ PAGE 2 — THE PROBLEM ============ -->
   <section class="page">
     <div class="section-head">
       <span class="eyebrow2">The Problem</span>
     </div>
 
     <div class="prose">
-      <p class="lead">Three times each year, benchmark assessments generated hundreds of student results that needed to be translated into teacher-specific parent communication packets. The process required extensive manual filtering, document preparation, formatting, and organization before anything could be shared with families.</p>
+      <p class="lead">Three times a year, benchmark testing produced hundreds of student results. All of them had to be filtered, formatted, and organized into parent communication packets before anything could go home to families.</p>
+      <p>Teachers prepared students for the testing. Literacy specialists handled everything that came after: administering the assessments, generating the parent letters, tracking what went out. Working closely with both groups, I found myself in a position to see the entire workflow instead of just one piece of it.</p>
     </div>
 
     <div class="compare">
@@ -349,7 +358,21 @@
       </div>
     </div>
 
-    <p class="statement">The solution wasn&rsquo;t another spreadsheet. It was designing the spreadsheet to behave like an application.</p>
+    <div class="prose" style="margin-top:36px">
+      <p>The fix didn&rsquo;t arrive all at once. It grew in stages, each one replacing a little more of the manual work:</p>
+    </div>
+
+    <p class="evo">Manual process <span class="arrow">&rarr;</span> mail merge <span class="arrow">&rarr;</span> cleaner workflow <span class="arrow">&rarr;</span> automation <span class="arrow">&rarr;</span> AI assistance <span class="arrow">&rarr;</span> standalone application</p>
+
+    <div class="prose">
+      <p>There was also a promise in the middle of it. I&rsquo;d told a friend and colleague I would always take care of the letters, and I meant it.</p>
+    </div>
+
+    <p class="pullquote">The breakthrough wasn&rsquo;t building software. It was realizing the only way to keep that promise was to make the process stop depending on me.</p>
+
+    <div class="prose">
+      <p>That&rsquo;s what turned a collection of automations into something anyone can run. Not another spreadsheet. A spreadsheet designed to behave like an application.</p>
+    </div>
   </section>
 
   <!-- ============ PAGE 3 — THE PRODUCT ============ -->
@@ -359,12 +382,12 @@
     </div>
 
     <div class="prose">
-      <p class="lead">A teacher exports their benchmark data, drops the file in a folder, and clicks one button. The system imports the newest file, normalizes it, filters to the selected assessment window, groups students by teacher, and generates a formatted Google Doc packet for each &mdash; automatically applying the correct window, template, and formatting every time.</p>
+      <p class="lead">A teacher exports their benchmark data, drops the file in a folder, and clicks one button. The system imports the newest file, filters to the selected assessment window, groups students by teacher, and generates a formatted Google Doc packet for each one.</p>
     </div>
 
     <figure>
       <img class="shot" src="Dashboard.png" alt="The Parent Communication Dashboard — a guided control panel built in Google Sheets">
-      <figcaption>The control panel &mdash; guided steps, live status, and a one-click run, all from a single screen.</figcaption>
+      <figcaption>The control panel: guided steps, live status, and a one-click run from a single screen.</figcaption>
     </figure>
 
     <div class="trio">
@@ -374,7 +397,7 @@
       </div>
       <div class="failcard">
         <div class="kick">Live status</div>
-        <p>Status indicators and a progress bar show what&rsquo;s done and what&rsquo;s left, in real time.</p>
+        <p>Status indicators and a progress bar show what&rsquo;s done and what&rsquo;s left.</p>
       </div>
       <div class="failcard">
         <div class="kick">Setup validation</div>
@@ -388,12 +411,12 @@
       <span class="eyebrow2">First-run setup</span>
     </div>
     <div class="prose">
-      <p>Rather than requiring users to edit hidden configuration values or documentation, I designed a guided setup wizard that walks them through first-time configuration with visual instructions &mdash; and validates the required resources before the application can be used.</p>
+      <p>Nobody should have to dig through hidden configuration values to use a tool. A built-in wizard walks users through first-time setup with visual instructions and checks every required resource before the tool will run.</p>
     </div>
 
     <figure class="narrow">
       <img class="shot" src="Wizard.png" alt="The built-in setup wizard, walking a user through first-time configuration">
-      <figcaption>The built-in setup wizard &mdash; a non-technical user can configure and run the tool without help.</figcaption>
+      <figcaption>The setup wizard. A non-technical user can configure and run the tool without help.</figcaption>
     </figure>
 
     <div class="divider"></div>
@@ -405,7 +428,7 @@
       <video class="shot" controls preload="metadata" playsinline poster="Dashboard.png">
         <source src="Acadience Demo v1.mp4" type="video/mp4">
       </video>
-      <figcaption>A 90-second walkthrough &mdash; from exported data to finished packets, in one click.</figcaption>
+      <figcaption>A 90-second walkthrough: from exported data to finished packets, in one click.</figcaption>
     </figure>
   </section>
 
@@ -416,17 +439,17 @@
     </div>
 
     <div class="prose">
-      <p class="lead">The system is designed as a pipeline, not a single script. Raw data is imported, cleaned, and validated, then written to one processed dataset that acts as a single source of truth. Only then does the workflow engine run &mdash; selecting students, merging data into templates, and generating a formatted packet for each teacher.</p>
+      <p class="lead">The system is a pipeline, not a single script. Raw data is imported, cleaned, and validated into one processed dataset that acts as the single source of truth. The workflow engine reads only from that dataset: it selects students, merges data into templates, and generates a packet for each teacher.</p>
     </div>
 
     <figure>
       <img class="shot" src="Workflow.png" alt="The processing pipeline — import, normalize and validate, create processed dataset, run workflow engine, generate outputs">
-      <figcaption>Each stage has a single responsibility &mdash; so problems are easy to isolate, and new outputs can attach without disturbing the core.</figcaption>
+      <figcaption>Each stage has a single responsibility, so problems are easy to isolate and new outputs can attach without disturbing the core.</figcaption>
     </figure>
 
     <div class="note">
       <div class="kick">Built to extend</div>
-      <p>The split ending is deliberate. Parent-letter packets are live today; additional outputs &mdash; student reports, MTSS summaries, compliance documents &mdash; are planned modules that hang off the same engine rather than rebuilds of it. New requirements become an output-layer change, not a new project.</p>
+      <p>The split ending is deliberate. Parent letters are live today. Student reports, MTSS summaries, and compliance documents are planned modules that hang off the same engine. New requirements become an output-layer change, not a new project.</p>
     </div>
   </section>
 
@@ -438,53 +461,53 @@
 
     <div class="note">
       <div class="kick">The constraint</div>
-      <p>Google Apps Script caps a single execution at roughly six minutes. A full building&rsquo;s worth of letters takes longer than that &mdash; so a naive version would simply stop partway through.</p>
+      <p>Google Apps Script stops any single execution at about six minutes. A full building&rsquo;s worth of letters takes longer than that, so a naive version would quit partway through.</p>
     </div>
 
     <div class="prose">
-      <p>Workspace accounts get a longer window, but I built for the shorter limit on purpose &mdash; so the tool runs anywhere, on any account, without depending on a particular tier. Then I designed around the constraint rather than against it.</p>
-      <p>The workflow processes as many teacher packets as it can within a safe time budget, then automatically schedules its own continuation and resumes where it left off &mdash; until every packet is complete. Progress is tracked in the data itself, so the system always knows what&rsquo;s done and what remains, which also means it can recover if anything interrupts it mid-run.</p>
+      <p>Workspace accounts get a longer window, but I built for the shorter limit on purpose so the tool runs on any account. Then I designed around the constraint instead of against it.</p>
+      <p>The workflow processes as many packets as fit in a safe time budget, saves its progress in the data itself, and schedules its own continuation. It resumes where it left off until every packet is complete. Because progress lives in the data, it can also recover if anything interrupts it mid-run.</p>
     </div>
 
     <figure>
       <svg class="relaysvg" viewBox="0 0 720 200" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Diagram of the self-continuing relay loop">
         <!-- boxes -->
-        <rect x="0" y="20" width="214" height="104" rx="12" fill="#fafbfc" stroke="#e8eaed"/>
-        <rect x="253" y="20" width="214" height="104" rx="12" fill="#fafbfc" stroke="#e8eaed"/>
-        <rect x="506" y="20" width="214" height="104" rx="12" fill="#fafbfc" stroke="#e8eaed"/>
+        <rect x="0" y="20" width="214" height="104" rx="12" fill="#fafbfc" stroke="#E3E7EA"/>
+        <rect x="253" y="20" width="214" height="104" rx="12" fill="#fafbfc" stroke="#E3E7EA"/>
+        <rect x="506" y="20" width="214" height="104" rx="12" fill="#fafbfc" stroke="#E3E7EA"/>
         <!-- box 1 -->
-        <text x="20" y="46" font-size="13" font-weight="700" fill="#12294d">1</text>
-        <text x="20" y="70" font-size="15" font-weight="600" fill="#1a1d21">Process a batch</text>
-        <text x="20" y="91" font-size="12" fill="#6b727c">as many as fit within</text>
-        <text x="20" y="107" font-size="12" fill="#6b727c">a safe time budget</text>
+        <text x="20" y="46" font-size="13" font-weight="700" fill="#17345C">1</text>
+        <text x="20" y="70" font-size="15" font-weight="600" fill="#434C4F">Process a batch</text>
+        <text x="20" y="91" font-size="12" fill="#7A8895">as many as fit within</text>
+        <text x="20" y="107" font-size="12" fill="#7A8895">a safe time budget</text>
         <!-- box 2 -->
-        <text x="273" y="46" font-size="13" font-weight="700" fill="#12294d">2</text>
-        <text x="273" y="70" font-size="15" font-weight="600" fill="#1a1d21">Save progress</text>
-        <text x="273" y="91" font-size="12" fill="#6b727c">what&rsquo;s done, recorded</text>
-        <text x="273" y="107" font-size="12" fill="#6b727c">in the data itself</text>
+        <text x="273" y="46" font-size="13" font-weight="700" fill="#17345C">2</text>
+        <text x="273" y="70" font-size="15" font-weight="600" fill="#434C4F">Save progress</text>
+        <text x="273" y="91" font-size="12" fill="#7A8895">what&rsquo;s done, recorded</text>
+        <text x="273" y="107" font-size="12" fill="#7A8895">in the data itself</text>
         <!-- box 3 -->
-        <text x="526" y="46" font-size="13" font-weight="700" fill="#12294d">3</text>
-        <text x="526" y="70" font-size="14" font-weight="600" fill="#1a1d21">Schedule continuation</text>
-        <text x="526" y="91" font-size="12" fill="#6b727c">queues the next run,</text>
-        <text x="526" y="107" font-size="12" fill="#6b727c">automatically</text>
+        <text x="526" y="46" font-size="13" font-weight="700" fill="#17345C">3</text>
+        <text x="526" y="70" font-size="14" font-weight="600" fill="#434C4F">Schedule continuation</text>
+        <text x="526" y="91" font-size="12" fill="#7A8895">queues the next run,</text>
+        <text x="526" y="107" font-size="12" fill="#7A8895">automatically</text>
         <!-- arrows between -->
-        <line x1="214" y1="72" x2="247" y2="72" stroke="#9aa1ab" stroke-width="1.5"/>
-        <polygon points="253,72 245,68 245,76" fill="#9aa1ab"/>
-        <line x1="467" y1="72" x2="500" y2="72" stroke="#9aa1ab" stroke-width="1.5"/>
-        <polygon points="506,72 498,68 498,76" fill="#9aa1ab"/>
+        <line x1="214" y1="72" x2="247" y2="72" stroke="#7A8895" stroke-width="1.5"/>
+        <polygon points="253,72 245,68 245,76" fill="#7A8895"/>
+        <line x1="467" y1="72" x2="500" y2="72" stroke="#7A8895" stroke-width="1.5"/>
+        <polygon points="506,72 498,68 498,76" fill="#7A8895"/>
         <!-- return loop -->
-        <path d="M613,124 L613,150 Q613,158 605,158 L115,158 Q107,158 107,150 L107,130" fill="none" stroke="#12294d" stroke-width="1.5"/>
-        <polygon points="107,122 103,131 111,131" fill="#12294d"/>
-        <text x="360" y="182" font-size="12" font-weight="500" fill="#12294d" text-anchor="middle">Resumes where it left off &mdash; until every packet is complete</text>
+        <path d="M613,124 L613,150 Q613,158 605,158 L115,158 Q107,158 107,150 L107,130" fill="none" stroke="#17345C" stroke-width="1.5"/>
+        <polygon points="107,122 103,131 111,131" fill="#17345C"/>
+        <text x="360" y="182" font-size="12" font-weight="500" fill="#17345C" text-anchor="middle">Resumes where it left off until every packet is complete</text>
       </svg>
-      <figcaption>The self-continuing relay &mdash; the run advances, saves its place, and reschedules itself until the job is done.</figcaption>
+      <figcaption>The self-continuing relay: the run advances, saves its place, and reschedules itself until the job is done.</figcaption>
     </figure>
 
-    <p class="statement">This turned the experience from &ldquo;keep clicking until it finishes&rdquo; into &ldquo;click once and walk away.&rdquo;</p>
+    <p class="statement">This turned &ldquo;keep clicking until it finishes&rdquo; into &ldquo;click once and walk away.&rdquo;</p>
 
     <div class="note">
       <div class="kick">Reporting, not deciding</div>
-      <p>The tool reports each student&rsquo;s benchmark results &mdash; it doesn&rsquo;t interpret them or recommend what to do next. Surfacing the data is its job; deciding what it means for a child stays with educators. That boundary was deliberate, and it&rsquo;s the line future modules will hold to as well.</p>
+      <p>The tool reports each student&rsquo;s benchmark results. It doesn&rsquo;t interpret them or recommend what to do next. What the data means for a child stays with educators, and future modules will hold that same line.</p>
     </div>
   </section>
 
@@ -497,26 +520,26 @@
     <div class="stats">
       <div class="stat">
         <div class="val">~12 min</div>
-        <div class="lab">One click, unattended &mdash; down from days of manual work.</div>
+        <div class="lab">One click, unattended. Down from days of manual work.</div>
       </div>
       <div class="stat">
         <div class="val">Every run</div>
-        <div class="lab">Correct and identical, no matter who generates it or how rushed they are.</div>
+        <div class="lab">Correct and identical, no matter who runs it.</div>
       </div>
     </div>
 
     <div class="prose">
-      <p>The time saved is the obvious win. The bigger one is reliability: the mistakes that used to be easy to make &mdash; the wrong window, a broken merge field, a bad file format &mdash; simply can&rsquo;t happen anymore. Every packet comes out correct and consistent.</p>
+      <p>The time saved is the obvious win. The bigger one is reliability. The mistakes that used to be easy to make, like the wrong window or a broken merge field, can&rsquo;t happen anymore.</p>
     </div>
 
     <p class="pullquote">A solution that only one person can run isn&rsquo;t really a solution.</p>
     <div class="prose">
-      <p>One that other people can pick up, understand, and adopt on their own is. Early on, I documented a simpler spreadsheet-and-mail-merge version of the process, and other schools began running their own copies of it &mdash; the approach spread well beyond my building.</p>
+      <p>One that other people can pick up and run on their own is. Early on, I documented a simpler mail-merge version of the process, and other schools began running their own copies. The approach spread well beyond my building, and I have a feeling this version will make it to them too.</p>
     </div>
 
     <div class="note">
       <div class="kick">Leverage where it counts</div>
-      <p>The district has since merged the reading and math specialist roles into a single position &mdash; one person now carries the workload two people used to share. A tool that turns days of manual work into one click is exactly the kind of leverage that makes do-more-with-less survivable.</p>
+      <p>The district has since merged the reading and math specialist roles into one position. One person now carries the workload two people used to share. A tool that turns days of work into one click is what makes that survivable.</p>
     </div>
 
     <div class="divider"></div>
@@ -527,7 +550,7 @@
     <div class="trio">
       <div class="failcard">
         <div class="kick">More output modules</div>
-        <p>Administrator reports, intervention documentation, and compliance notifications &mdash; on the same engine, without touching the core.</p>
+        <p>Administrator reports, intervention documentation, and compliance notifications, all on the same engine.</p>
       </div>
       <div class="failcard">
         <div class="kick">A hardened relay</div>
@@ -535,10 +558,10 @@
       </div>
       <div class="failcard">
         <div class="kick">Built to adapt</div>
-        <p>The district is moving away from one assessment subject &mdash; a modular output-layer change, not a rebuild.</p>
+        <p>The district is moving away from one assessment subject. That&rsquo;s an output-layer change, not a rebuild.</p>
       </div>
     </div>
-    <p class="statement wide">The goal was a polished, documented version that solves a real problem well &mdash; not the largest possible application.</p>
+    <p class="statement wide">The goal was a polished, documented version that solves a real problem well, not the largest possible application.</p>
 
     <div class="divider"></div>
 
@@ -546,7 +569,7 @@
       <span class="eyebrow2">Where AI Fit</span>
     </div>
     <div class="prose">
-      <p>AI accelerated the implementation; it didn&rsquo;t replace the thinking. The problem definition, the architecture, the tradeoffs, and the testing were mine &mdash; and knowing how to direct AI well, and being honest about it, is itself a current, relevant skill.</p>
+      <p>AI accelerated the build. It didn&rsquo;t replace the thinking. The problem definition, the architecture, the tradeoffs, and the testing were mine.</p>
     </div>
 
     <div class="links">
